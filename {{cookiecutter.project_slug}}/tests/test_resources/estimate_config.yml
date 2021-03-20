@@ -1,0 +1,12 @@
+work_factors:
+  'type1':
+    complex:
+    - 'A'
+    - 'B'
+    - 'C'
+    - 'H'
+    simple:
+    - 'D'
+    - 'E'
+    - 'F'
+    - 'G'
