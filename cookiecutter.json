@@ -2,5 +2,6 @@
   "author": "Author name",
   "author_email": "email@email.com",
   "description": "A tool for estimating projects",
-  "project_slug": "quick_estimator"
+  "project_slug": "quick_estimator",
+  "url": "myurl"
 }
