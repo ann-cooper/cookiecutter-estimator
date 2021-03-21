@@ -2,6 +2,8 @@
 #
 # Script to create a new customized project from this cookiecutter
 #
-python /Users/achomeplace/git/cookiecutter_estimator/hooks/gen_estimator.py
+PACKAGE_PATH=$1
+echo ${PACKAGE_PATH}
+python ${PACKAGE_PATH}/cookiecutter_estimator/hooks/gen_estimator.py
 
-cookiecutter /Users/achomeplace/git/cookiecutter_estimator/
+cookiecutter ${PACKAGE_PATH}/cookiecutter_estimator/

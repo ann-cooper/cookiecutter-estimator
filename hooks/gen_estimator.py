@@ -13,7 +13,7 @@ def get_work_types() -> int:
     return int(work_types)
 
 def create_config(num: int = get_work_types()) -> dict:
-
+    # TODO more flexible number of work factors
     work_type_pattern = {'work_factors': {}}
     # Create estimate_config.yml
     for t in range(num):
