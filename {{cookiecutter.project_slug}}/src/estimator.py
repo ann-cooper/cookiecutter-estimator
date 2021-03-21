@@ -62,6 +62,6 @@ def get_resource(arguments: dict) -> list:
 if __name__ == "__main__":  # pragma: no cover
     arguments = docopt(__doc__)
     with open("{{cookiecutter.project_slug}}/estimate_config.yml") as f:
-        conf = yaml.load(f, Loader=yaml.FullLoader)
+        conf = yaml.safe_load(f)
     options = get_resource(arguments)
     estimate_points(profile_issue(options, conf["work_factors"]))

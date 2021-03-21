@@ -19,7 +19,7 @@ def find_path():
 def load_test_config(path=find_path()):
     """Load work_factors dictionary from yaml."""
     with open(path) as f:
-        conf = yaml.load(f, Loader=yaml.FullLoader)
+        conf = yaml.safe_load(f)
     return conf["work_factors"]
 
 
