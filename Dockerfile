@@ -2,7 +2,6 @@ FROM python:3.8-slim-buster
 
 RUN set -ex \
     && apt-get update -y \
-    && apt-get install -y libpq-dev build-essential postgresql-client \
     && mkdir /code \
     && groupadd -g 999 appuser \
     && useradd -r -d /code -u 999 -g appuser appuser
