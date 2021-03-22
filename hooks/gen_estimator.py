@@ -8,13 +8,30 @@ logger = logging.getLogger(__name__)
 
 
 def get_work_types() -> int:
+    """Asks for input to determine number of project types and number of work factors to define."""
+
     work_types = input("How many project types do you want to define today? Please type a number: ") or 1
     work_factors = input("How many work factors do you want to define for each project type? Please type a number: ") or 4
-    return int(work_types), int(work_factors)
+    return (int(work_types), int(work_factors))
 
 
 def create_config(type_num: int, factors_num: int) -> dict:
-    # TODO more flexible number of work factors
+    """Generates a config.yaml that the estimator will use to show options and a dictionary with the 
+    needed cookiecutter template variables to customize.
+
+    Parameters
+    ----------
+    type_num: int
+        The number of project types to define with cookiecutter.
+    factors_num: int
+        The number of work factors to define for each project type.
+    
+    Returns
+    -------
+    work_type_pattern: dict
+        The dictionary that was used to create the yaml.
+    """
+
     work_type_pattern = {'work_factors': {}}
     # Create estimate_config.yml
     for t in range(type_num):
@@ -29,6 +46,7 @@ def create_config(type_num: int, factors_num: int) -> dict:
     return work_type_pattern
 
 def update_cookiecutter_variables(d: dict) -> json:
+    """Uses the work_type_pattern defined by the user to write the cookiecutter json file."""
     # Add needed keys to cookiecutter.json based on input
     with open('cookiecutter.json', 'r') as f:
         data = json.load(f)
