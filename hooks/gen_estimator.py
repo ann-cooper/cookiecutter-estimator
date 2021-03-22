@@ -9,35 +9,26 @@ logger = logging.getLogger(__name__)
 
 def get_work_types() -> int:
     work_types = input("How many project types do you want to define today? Please type a number: ") or 1
+    work_factors = input("How many work factors do you want to define for each project type? Please type a number: ") or 4
+    return int(work_types), int(work_factors)
 
-    return int(work_types)
 
-def create_config(num: int = get_work_types()) -> dict:
+def create_config(type_num: int, factors_num: int) -> dict:
     # TODO more flexible number of work factors
     work_type_pattern = {'work_factors': {}}
     # Create estimate_config.yml
-    for t in range(num):
+    for t in range(type_num):
         i = t
         t = f'{{{{cookiecutter.project_type{i}}}}}'
         work_type_pattern['work_factors'][t] = {}
-        work_type_pattern['work_factors'][t]['simple'] = [
-            f'{{{{cookiecutter.project_type{i}_a_simple_factor_1}}}}', 
-            f'{{{{cookiecutter.project_type{i}_a_simple_factor_2}}}}',
-            f'{{{{cookiecutter.project_type{i}_a_simple_factor_3}}}}',
-            f'{{{{cookiecutter.project_type{i}_a_simple_factor_4}}}}'
-            ]
-        work_type_pattern['work_factors'][t]['complex'] = [
-            f'{{{{cookiecutter.project_type{i}_complex_factor_1}}}}', 
-            f'{{{{cookiecutter.project_type{i}_complex_factor_2}}}}',
-            f'{{{{cookiecutter.project_type{i}_complex_factor_3}}}}',
-            f'{{{{cookiecutter.project_type{i}_complex_factor_4}}}}'
-            ]
-    
+        work_type_pattern['work_factors'][t]['simple'] = [f'{{{{cookiecutter.project_type{i}_a_simple_factor_{ix}}}}}' for ix in range(factors_num)]
+        work_type_pattern['work_factors'][t]['complex'] = [f'{{{{cookiecutter.project_type{i}_complex_factor_{ix}}}}}' for ix in range(factors_num)]
+
     with open('{{cookiecutter.project_slug}}/estimate_config.yml', 'w') as f:
         yaml.dump(work_type_pattern, f)
     return work_type_pattern
 
-def update_cookiecutter_variables(d: dict = create_config()):
+def update_cookiecutter_variables(d: dict) -> json:
     # Add needed keys to cookiecutter.json based on input
     with open('cookiecutter.json', 'r') as f:
         data = json.load(f)
@@ -54,5 +45,7 @@ def update_cookiecutter_variables(d: dict = create_config()):
         logger.info("Cookiecutter created!")
         json.dump(ordered_data, f)
 
-if __name__ == "__main__":
-    update_cookiecutter_variables()
+
+if __name__ == "__main__":  # pragma: no cover
+    work_types, work_factors = get_work_types()
+    update_cookiecutter_variables(create_config(work_types, work_factors))

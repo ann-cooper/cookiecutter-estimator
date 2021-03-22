@@ -3,7 +3,7 @@
 # Script called by Dockerfile to test the cookiecutter project using a no-input project generated in the container.
 #
 
-echo -e 1 | python hooks/gen_estimator.py
+echo -e 1 4  | python hooks/gen_estimator.py
 
 cookiecutter . --no-input
 
