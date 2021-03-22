@@ -4,6 +4,6 @@
 #
 PACKAGE_PATH=$1
 echo ${PACKAGE_PATH}
-python ${PACKAGE_PATH}/cookiecutter_estimator/hooks/gen_estimator.py
+python ${PACKAGE_PATH}/cookiecutter-estimator/hooks/gen_estimator.py
 
-cookiecutter ${PACKAGE_PATH}/cookiecutter_estimator/
+cookiecutter ${PACKAGE_PATH}/cookiecutter-estimator/
