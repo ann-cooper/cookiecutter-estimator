@@ -1,8 +1,0 @@
-work_factors:
-  '{{cookiecutter.project_type0}}':
-    complex:
-    - '{{cookiecutter.project_type0_complex_factor_0}}'
-    - '{{cookiecutter.project_type0_complex_factor_1}}'
-    simple:
-    - '{{cookiecutter.project_type0_a_simple_factor_0}}'
-    - '{{cookiecutter.project_type0_a_simple_factor_1}}'

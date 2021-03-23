@@ -7,12 +7,12 @@ from collections import OrderedDict
 logger = logging.getLogger(__name__)
 
 
-def get_work_types() -> int:
+def get_work_types() -> tuple:
     """Asks for input to determine number of project types and number of work factors to define."""
 
-    work_types = input("How many project types do you want to define today? Please type a number: ") or 1
-    work_factors = input("How many work factors do you want to define for each project type? Please type a number: ") or 4
-    return (int(work_types), int(work_factors))
+    inputs = input("How many project types and work factors do you want to define today? Please type two numbers, the first for project and the second for work factors, like this: 2, 4 ")
+    work_types, work_factors = inputs.split(',')
+    return int(work_types), int(work_factors)
 
 
 def create_config(type_num: int, factors_num: int) -> dict:

@@ -2,8 +2,8 @@
 This is an interactive cookiecutter for generating simple estimates based on the projects and work factors you define.
 
 ## Creating a new customized estimator
-- Run the build script from this project with `bash build.sh <path/to/parent/dir/of/this/project>`.
-- For example: `bash build.sh $HOME/git` is what I use because cookiecutter-estimator is in $HOME/git for me.
+- Run the build script from this project with `bash build.sh <path/to/this/project>`.
+- For example: `bash build.sh $HOME/git/cookiecutter-estimator`.
 - This will interactively create the number of work types you want to define and then run the cookiecutter to create your estimator.
 
 ## Managing dependencies
