@@ -7,6 +7,7 @@ echo -e "1, 4"  | python hooks/gen_estimator.py
 
 cookiecutter . --no-input
 
-python3 -m pytest quick_estimator/tests
-
 bandit -r quick_estimator/src
+
+python3 -m pytest quick_estimator/tests
+exit $?
